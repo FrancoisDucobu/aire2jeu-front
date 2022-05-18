@@ -64,7 +64,7 @@ export default {
       }
 
       markers.map( marker => {
-        console.log( [marker.location.lat, marker.location.lng] );
+        // console.log( [marker.location.lat, marker.location.lng] );
         this.currentMarkers.push( new mapboxgl.Marker()
             .setLngLat([marker.location.lng, marker.location.lat])
             .addTo(this.map) );

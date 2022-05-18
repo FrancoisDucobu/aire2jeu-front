@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import HelloWorld from './components/RightPanel.vue'
 import MainMap from "@/components/map/MainMap";
 
 export default {
