@@ -37,15 +37,15 @@ export default {
     }
   },
 
-  async fetchMunicipality({ commit }, payload) {
-    console.log( 'fetchMunicipality',payload );
+  async fetchPlace({ commit }, payload) {
+    console.log( 'fetchPlace',payload );
     await apiClient
       .get(
-        `/api.php/commune/${payload.municipalityId}?include_cities=true&include_poi=true`
+        `/api/place/${payload.id}`
       )
       .then(async (response) => {
         if (response.status === 200 && response.data.success) {
-          commit("setMunicipality", { municipality: response.data.data });
+          commit("setPlace", { place: response.data.data });
           if (payload.successCallback) {
             payload.successCallback();
           }

@@ -13,6 +13,7 @@ import {
   faIceSkate,
   faFort,
   faAngleDown,
+    faMapMarkerAlt,
 } from "@fortawesome/pro-light-svg-icons";
 
 library.add(
@@ -26,7 +27,8 @@ library.add(
   faGoalNet,
   faIceSkate,
   faFort,
-  faAngleDown
+  faAngleDown,
+faMapMarkerAlt,
 );
 
 export default (app) => {

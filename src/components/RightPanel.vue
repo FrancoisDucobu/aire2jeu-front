@@ -1,5 +1,5 @@
 <template>
-  <div class="p-2 h-full max-h-full flex flex-col">
+  <div class="p-4 h-full max-h-full flex flex-col gap-2">
     <div class="shrink-0">
       <TopBar />
     </div>

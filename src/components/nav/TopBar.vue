@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-row p-2">
+  <div class="flex flex-row">
     <div class="flex-1">
       <div class="text-3xl font-bold font-sans">Aire de jeux</div>
     </div>
