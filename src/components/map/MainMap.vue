@@ -86,17 +86,11 @@ export default {
         }
       }
 
-      this.places.filter( marker => this.place === null || marker.id !== this.place.id ).map( marker => {
-        this.currentMarkers.push( new mapboxgl.Marker()
+      this.places.map( marker => {
+        this.currentMarkers.push( new mapboxgl.Marker({ color: this.place.id === marker.id ? 'red' : null })
             .setLngLat([marker.location.lng, marker.location.lat])
             .addTo(this.map) );
       })
-
-      if( this.place !== null ){
-        this.currentMarkers.push( new mapboxgl.Marker({ color: 'red'})
-            .setLngLat([this.place.location.lng, this.place.location.lat])
-            .addTo(this.map) );
-      }
 
     },
 

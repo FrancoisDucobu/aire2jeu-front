@@ -50,6 +50,7 @@ export default {
         id: this.$route.params.place_id,
         successCallback: () => {
           this.loading = false
+          console.log(this.place);
         }
       });
     } catch (error) {
