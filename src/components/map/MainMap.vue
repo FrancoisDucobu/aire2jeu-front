@@ -26,11 +26,34 @@ export default {
     this.search();
   },
   computed: {
-    ...mapGetters({ places: 'places/getPlacesList' }),
+    ...mapGetters({ places: 'places/getPlacesList', place: 'places/getPlace' }),
   },
   watch: {
-    places( places ){
-      this.updateMarkers( places );
+    places(){
+      this.updateMarkers();
+    },
+    place( place ){
+      this.updateMarkers()
+      this.map.flyTo({
+        // These options control the ending camera position: centered at
+        // the target, at zoom level 9, and north up.
+        center: [place.location.lng, place.location.lat],
+        zoom: 16,
+        bearing: 0,
+
+        // These options control the flight curve, making it move
+        // slowly and zoom out almost completely before starting
+        // to pan.
+        speed: 2, // make the flying slow
+        curve: 1, // change the speed at which it zooms out
+
+        // This can be any easing function: it takes a number between
+        // 0 and 1 and returns another number between 0 and 1.
+        easing: (t) => t,
+
+        // this animation is considered essential with respect to prefers-reduced-motion
+        essential: true
+      })
     }
   },
   methods: {
@@ -55,7 +78,7 @@ export default {
       }
     },
 
-    updateMarkers( markers ){
+    updateMarkers(){
 
       if ( Array.isArray( this.currentMarkers ) && this.currentMarkers.length ) {
         for (var i = this.currentMarkers.length - 1; i >= 0; i--) {
@@ -63,12 +86,17 @@ export default {
         }
       }
 
-      markers.map( marker => {
-        // console.log( [marker.location.lat, marker.location.lng] );
+      this.places.filter( marker => this.place === null || marker.id !== this.place.id ).map( marker => {
         this.currentMarkers.push( new mapboxgl.Marker()
             .setLngLat([marker.location.lng, marker.location.lat])
             .addTo(this.map) );
       })
+
+      if( this.place !== null ){
+        this.currentMarkers.push( new mapboxgl.Marker({ color: 'red'})
+            .setLngLat([this.place.location.lng, this.place.location.lat])
+            .addTo(this.map) );
+      }
 
     },
 

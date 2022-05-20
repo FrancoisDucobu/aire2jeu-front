@@ -6,7 +6,7 @@ export default {
       await apiClient
         .get(`/api/place?longitude=${payload.long}&latitude=${payload.lat}`)
         .then(async (response) => {
-          if (response.status === 200 && response.data.data ) {
+          if (response.status === 200 && response.data.data) {
             commit("setPlacesList", {
               placesList: response.data.data,
             });
@@ -38,13 +38,11 @@ export default {
   },
 
   async fetchPlace({ commit }, payload) {
-    console.log( 'fetchPlace',payload );
+    console.log("fetchPlace", payload);
     await apiClient
-      .get(
-        `/api/place/${payload.id}`
-      )
+      .get(`/api/place/${payload.id}`)
       .then(async (response) => {
-        if (response.status === 200 && response.data.success) {
+        if (response.status === 200) {
           commit("setPlace", { place: response.data.data });
           if (payload.successCallback) {
             payload.successCallback();

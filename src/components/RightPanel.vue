@@ -4,17 +4,20 @@
       <TopBar />
     </div>
     <div class="max-h-full h-full overflow-scroll">
-      <ResultList />
+      <router-view v-slot="{ Component }">
+        <transition name="fade">
+          <component :is="Component" />
+        </transition>
+      </router-view>
     </div>
   </div>
 </template>
 
 <script>
 import TopBar from "@/components/nav/TopBar";
-import ResultList from "@/components/ResultList";
 
 export default {
   name: 'RightPanel',
-  components: {ResultList, TopBar},
+  components: {TopBar},
 }
 </script>
