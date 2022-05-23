@@ -87,7 +87,7 @@ export default {
       }
 
       this.places.map( marker => {
-        this.currentMarkers.push( new mapboxgl.Marker({ color: this.place.id === marker.id ? 'red' : null })
+        this.currentMarkers.push( new mapboxgl.Marker({ color: this.place && this.place.id === marker.id ? 'red' : ( marker.marker.bg_color ? marker.marker.bg_color : null ) })
             .setLngLat([marker.location.lng, marker.location.lat])
             .addTo(this.map) );
       })

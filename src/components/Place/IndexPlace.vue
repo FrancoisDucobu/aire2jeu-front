@@ -11,7 +11,10 @@
             class="border rounded-md p-2 flex flex-col"
         >
           <div class="flex flex-row gap-1" @click="$router.push({ name: 'place_view', params: { place_id: place.id } })">
-            <span class="w-6 h-6 rounded-md shrink-0 bg-red-400 text-white p-1 flex items-center justify-center">
+            <span
+                class="w-6 h-6 rounded-md shrink-0 text-white p-1 flex items-center justify-center"
+                :class="`bg-[${ place.marker.bg_color }]`"
+            >
               <font-awesome-icon :icon="['fal','map-marker-alt']" size="xs" fixed-width></font-awesome-icon>
             </span>
             <h1
