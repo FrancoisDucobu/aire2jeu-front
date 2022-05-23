@@ -13,7 +13,7 @@
       <div class="w-6 h-6 rounded-md bg-blue-400 flex items-center justify-center text-white" @click="$router.push({ name: 'place_index'})">
         <font-awesome-icon :icon="['fal','angle-left']"></font-awesome-icon>
       </div>
-      <div class="shrink-0 text-xl font-bold">
+      <div class="flex-1 text-xl font-bold">
         Place {{ place.id }}
       </div>
     </div>

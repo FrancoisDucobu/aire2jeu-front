@@ -18,11 +18,16 @@
               <font-awesome-icon :icon="['fal','map-marker-alt']" size="xs" fixed-width></font-awesome-icon>
             </span>
             <h1
-                class="font-medium text-md"
+                class="font-medium text-md flex-1"
             ># {{ place.id }} {{ place.name }}</h1>
+            <div class="shrink-0">
+              <span class="bg-blue-400 text-white rounded-md text-xs px-2 py-1">
+                {{ place.location.distance }} m.
+              </span>
+            </div>
           </div>
           <div class="flex flex-row">
-            <div class="flex-1" v-html="place.address"></div>
+            <div class="flex-1 text-xs" v-html="place.address"></div>
             <div class="flex-1"></div>
           </div>
         </div>
