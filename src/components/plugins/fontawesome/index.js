@@ -15,6 +15,11 @@ import {
   faAngleDown,
   faMapMarkerAlt,
   faAngleLeft,
+  faIceCream,
+  faHouseTurret,
+  faGamepadModern,
+  faPersonToDoor,
+  faWater,
 } from "@fortawesome/pro-light-svg-icons";
 
 library.add(
@@ -30,7 +35,12 @@ library.add(
   faFort,
   faAngleDown,
   faAngleLeft,
-  faMapMarkerAlt
+  faMapMarkerAlt,
+  faIceCream,
+  faHouseTurret,
+  faGamepadModern,
+  faPersonToDoor,
+  faWater
 );
 
 export default (app) => {

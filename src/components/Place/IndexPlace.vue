@@ -5,32 +5,14 @@
     </div>
     <div class="max-h-full h-full overflow-scroll">
       <div class="flex flex-col gap-2">
-        <div
+        <template
             v-for="place in places"
-            :key="place.id"
-            class="border rounded-md p-2 flex flex-col"
+            :key="place"
         >
-          <div class="flex flex-row gap-1" @click="$router.push({ name: 'place_view', params: { place_id: place.id } })">
-            <span
-                class="w-6 h-6 rounded-md shrink-0 text-white p-1 flex items-center justify-center"
-                :class="`bg-[${ place.marker.bg_color }]`"
-            >
-              <font-awesome-icon :icon="['fal','map-marker-alt']" size="xs" fixed-width></font-awesome-icon>
-            </span>
-            <h1
-                class="font-medium text-md flex-1"
-            ># {{ place.id }} {{ place.name }}</h1>
-            <div class="shrink-0">
-              <span class="bg-blue-400 text-white rounded-md text-xs px-2 py-1">
-                {{ place.location.distance }} m.
-              </span>
-            </div>
-          </div>
-          <div class="flex flex-row">
-            <div class="flex-1 text-xs" v-html="place.address"></div>
-            <div class="flex-1"></div>
-          </div>
-        </div>
+          <BadgePlace
+              :place="place"
+          />
+        </template>
       </div>
     </div>
   </div>
@@ -38,9 +20,11 @@
 
 <script>
 import {mapActions, mapGetters} from "vuex";
+import BadgePlace from "@/components/Place/components/BadgePlace";
 
 export default {
   name: 'ResultList',
+  components: {BadgePlace},
   computed: {
     ...mapGetters({ places: 'places/getPlacesList' }),
   },
